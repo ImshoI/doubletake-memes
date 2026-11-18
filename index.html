@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Punny Boom - Comic Double Meaning Meme Generator</title>
+<title>Punny Boom - Free Comic Double Meaning Meme Generator | Auto & Upload</title>
+<meta name="description" content="Create hilarious double-meaning and punny memes in comic style. Auto-generate fun captions or upload your own photo. Free online meme maker with watermark. No signup needed.">
+<meta name="keywords" content="meme generator, double meaning memes, punny memes, comic meme maker, free meme generator, upload photo meme, double entendre memes">
+<meta name="author" content="Punny Boom">
+<meta property="og:title" content="Punny Boom - Comic Double Meaning Meme Generator">
+<meta property="og:description" content="Auto-generate hilarious double-meaning memes or upload your picture. Comic style, free, with beautiful watermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imshoi.github.io/doubletake-memes/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Punny Boom - Comic Meme Generator">
+<meta name="twitter:description" content="Make funny double-meaning memes instantly. Auto or upload your photo.">
+<link rel="canonical" href="https://imshoi.github.io/doubletake-memes/">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&family=Permanent+Marker&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -197,7 +208,23 @@ const captions = [
   "Why did the cookie go to the doctor? Because it felt crummy!",
   "I'm on a whiskey diet. I've lost three days already.",
   "What do you call a bear with no teeth? A gummy bear!",
-  "Why did the picture go to jail? Because it was framed!"
+  "Why did the picture go to jail? Because it was framed!",
+  "I asked the gym instructor if he could teach me to do splits. He said how flexible are you? I said I can bend over backwards for you.",
+  "She said she wanted a workout. I offered my personal training services in private.",
+  "He said he needed space. I offered my bed.",
+  "I told her I'm a carpenter. She asked if I was good with my wood.",
+  "She said she's into tech. I asked if she wanted to try my joystick.",
+  "My boss told me to raise the bar. I brought him to the pub.",
+  "She said she liked deep conversations. I took her to the ocean.",
+  "He asked if I was into fishing. I said only if we're talking about hooking up.",
+  "I love cooking with wine. Sometimes I even add it to the food.",
+  "She said she wanted a hammer. I didn't know she meant me.",
+  "Double standards are the worst. I mean one flag is enough.",
+  "I always thought it was interesting how double jointed kids were always really cool in elementary school. I mean weird flex but ok.",
+  "What do you get when you cross dirty double meanings with WWI? The Triple Entendre.",
+  "A beautiful woman walks into a bar. What'll it be? asks the bartender. I'll have a double entendre she said. So he gave it to her.",
+  "I spent four years at college and didn't learn anything. It's really my own fault. I had a double major in psychology and reverse psychology.",
+  "Why did the double joke cross the bar? To make both of you blush."
 ];
 
 function getRandomCaption() {
@@ -205,11 +232,9 @@ function getRandomCaption() {
 }
 
 function drawComicBackground() {
-  // Yellow comic paper background
   ctx.fillStyle = '#fff8dc';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   
-  // Halftone dots
   ctx.fillStyle = 'rgba(255, 193, 7, 0.3)';
   for (let x = 0; x < canvas.width; x += 12) {
     for (let y = 0; y < canvas.height; y += 12) {
@@ -221,12 +246,10 @@ function drawComicBackground() {
     }
   }
   
-  // Comic border
   ctx.strokeStyle = '#000';
   ctx.lineWidth = 12;
   ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
   
-  // Corner bursts
   ctx.fillStyle = '#ff5722';
   ctx.beginPath();
   ctx.moveTo(0, 0);
@@ -242,15 +265,14 @@ function drawComicBackground() {
 
 function drawText(text, isTop = true) {
   const maxWidth = canvas.width - 80;
-  const fontSize = Math.min(60, maxWidth / (text.length * 0.6));
+  const fontSize = Math.min(58, maxWidth / (text.length * 0.55));
   ctx.font = `bold ${fontSize}px 'Bangers', cursive`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   
-  // Word wrap
   const words = text.split(' ');
   const lines = [];
-  let currentLine = words[0];
+  let currentLine = words[0] || '';
   
   for (let i = 1; i < words.length; i++) {
     const testLine = currentLine + ' ' + words[i];
@@ -262,21 +284,17 @@ function drawText(text, isTop = true) {
       currentLine = testLine;
     }
   }
-  lines.push(currentLine);
+  if (currentLine) lines.push(currentLine);
   
-  const lineHeight = fontSize * 1.1;
+  const lineHeight = fontSize * 1.15;
   const totalHeight = lines.length * lineHeight;
-  let y = isTop ? 80 + totalHeight / 2 : canvas.height - 80 - totalHeight / 2;
+  let y = isTop ? 70 + totalHeight / 2 : canvas.height - 70 - totalHeight / 2;
   
   lines.forEach((line, i) => {
     const ly = y + (i - lines.length / 2) * lineHeight;
-    
-    // Black outline
     ctx.strokeStyle = '#000';
-    ctx.lineWidth = 8;
+    ctx.lineWidth = 7;
     ctx.strokeText(line, canvas.width / 2, ly);
-    
-    // White fill
     ctx.fillStyle = '#fff';
     ctx.fillText(line, canvas.width / 2, ly);
   });
@@ -285,27 +303,20 @@ function drawText(text, isTop = true) {
 function drawWatermark() {
   const wmText = "Generated by Punny Boom";
   ctx.save();
-  ctx.globalAlpha = 0.7;
-  ctx.font = "16px 'Comic Neue', cursive";
-  ctx.fillStyle = '#000';
-  ctx.textAlign = 'right';
-  ctx.textBaseline = 'bottom';
-  
-  // Small logo
+  ctx.globalAlpha = 0.75;
   ctx.fillStyle = '#ff5722';
   ctx.beginPath();
-  ctx.arc(canvas.width - 160, canvas.height - 25, 12, 0, Math.PI * 2);
+  ctx.arc(canvas.width - 165, canvas.height - 28, 13, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = '#fff';
-  ctx.font = "bold 10px Bangers";
+  ctx.font = "bold 11px Bangers";
   ctx.textAlign = 'center';
-  ctx.fillText("PB", canvas.width - 160, canvas.height - 22);
+  ctx.fillText("PB", canvas.width - 165, canvas.height - 25);
   
-  // Text
   ctx.fillStyle = '#000';
-  ctx.font = "bold 14px 'Comic Neue', cursive";
+  ctx.font = "bold 13px 'Comic Neue', cursive";
   ctx.textAlign = 'right';
-  ctx.fillText(wmText, canvas.width - 20, canvas.height - 12);
+  ctx.fillText(wmText, canvas.width - 18, canvas.height - 14);
   ctx.restore();
 }
 
@@ -317,24 +328,24 @@ function renderMeme(image = null, caption = null) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
   if (image) {
-    // Draw user image, cover style
     const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
     const x = (canvas.width - image.width * scale) / 2;
     const y = (canvas.height - image.height * scale) / 2;
     ctx.drawImage(image, x, y, image.width * scale, image.height * scale);
-    
-    // Dark overlay for text readability
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.fillStyle = 'rgba(0,0,0,0.35)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   } else {
     drawComicBackground();
   }
   
-  // Draw caption at top and bottom for meme style, or split
-  const parts = caption.split('. ');
-  if (parts.length > 1 && Math.random() > 0.5) {
-    drawText(parts[0] + '.', true);
-    drawText(parts.slice(1).join('. '), false);
+  // Improved split logic for classic top/bottom meme style
+  const parts = caption.split(/\. |! |\? /);
+  if (parts.length >= 2 && caption.length > 60) {
+    const mid = Math.ceil(parts.length / 2);
+    const top = parts.slice(0, mid).join('. ').replace(/\.\s*$/, '') + '.';
+    const bottom = parts.slice(mid).join('. ');
+    drawText(top, true);
+    drawText(bottom, false);
   } else {
     drawText(caption, true);
   }
@@ -385,9 +396,6 @@ downloadBtn.addEventListener('click', () => {
   link.href = canvas.toDataURL('image/png');
   link.click();
 });
-
-// Initial
-// renderMeme();
 </script>
 </body>
 </html>
