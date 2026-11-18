@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Punny Boom - Free Comic Double Meaning Meme Generator | Auto & Upload</title>
-<meta name="description" content="Create hilarious double-meaning and punny memes in comic style. Auto-generate fun captions or upload your own photo. Free online meme maker with watermark. No signup needed.">
-<meta name="keywords" content="meme generator, double meaning memes, punny memes, comic meme maker, free meme generator, upload photo meme, double entendre memes">
+<meta name="description" content="Create hilarious double-meaning and punny memes. Auto-generate using viral templates (Drake, Distracted Boyfriend, This is Fine, etc.) or upload your own photo. Free online meme maker.">
+<meta name="keywords" content="meme generator, double meaning memes, punny memes, viral meme templates, Drake meme, Distracted Boyfriend, comic meme maker, free meme generator">
 <meta name="author" content="Punny Boom">
 <meta property="og:title" content="Punny Boom - Comic Double Meaning Meme Generator">
-<meta property="og:description" content="Auto-generate hilarious double-meaning memes or upload your picture. Comic style, free, with beautiful watermark.">
+<meta property="og:description" content="Auto-generate hilarious double-meaning memes on viral templates or upload your picture.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imshoi.github.io/doubletake-memes/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Punny Boom - Comic Meme Generator">
-<meta name="twitter:description" content="Make funny double-meaning memes instantly. Auto or upload your photo.">
 <link rel="canonical" href="https://imshoi.github.io/doubletake-memes/">
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
@@ -28,90 +26,41 @@ body {
   min-height: 100vh;
   padding: 20px;
 }
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
+header { text-align: center; margin-bottom: 30px; }
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #ffeb3b;
-  border: 4px solid #000;
-  border-radius: 20px;
-  padding: 10px 20px;
-  box-shadow: 6px 6px 0 #000;
-  font-family: 'Bangers', cursive;
-  font-size: 2.5rem;
-  letter-spacing: 2px;
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #ffeb3b; border: 4px solid #000; border-radius: 20px;
+  padding: 10px 20px; box-shadow: 6px 6px 0 #000;
+  font-family: 'Bangers', cursive; font-size: 2.5rem; letter-spacing: 2px;
 }
 .logo svg { width: 60px; height: 60px; }
 h1 { font-family: 'Bangers', cursive; font-size: 3rem; color: #d32f2f; text-shadow: 3px 3px 0 #000; margin: 10px 0; }
 .subtitle { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 30px 0;
-}
+.buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
 .btn {
-  font-family: 'Bangers', cursive;
-  font-size: 1.8rem;
-  padding: 15px 30px;
-  background: #ffeb3b;
-  border: 4px solid #000;
-  border-radius: 15px;
-  box-shadow: 5px 5px 0 #000;
-  cursor: pointer;
-  transition: all 0.1s;
-  letter-spacing: 1px;
+  font-family: 'Bangers', cursive; font-size: 1.8rem; padding: 15px 30px;
+  background: #ffeb3b; border: 4px solid #000; border-radius: 15px;
+  box-shadow: 5px 5px 0 #000; cursor: pointer; transition: all 0.1s; letter-spacing: 1px;
 }
 .btn:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 #000; }
 .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
 .btn.primary { background: #ff5722; color: white; }
 .btn.secondary { background: #4caf50; color: white; }
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+.container { max-width: 900px; margin: 0 auto; text-align: center; }
+#preview-container {
+  margin: 30px auto; position: relative; display: none;
+  border: 5px solid #000; border-radius: 15px; box-shadow: 8px 8px 0 #000;
+  background: white; overflow: hidden; max-width: 100%;
 }
-#canvas-container {
-  margin: 30px auto;
-  position: relative;
-  display: inline-block;
-  border: 5px solid #000;
-  border-radius: 15px;
-  box-shadow: 8px 8px 0 #000;
-  background: white;
-  overflow: hidden;
-}
-canvas { display: block; max-width: 100%; height: auto; }
-.controls {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
+#memeImg, canvas { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.controls { margin-top: 20px; display: none; justify-content: center; gap: 15px; flex-wrap: wrap; }
 input[type="file"] { display: none; }
 .caption-input {
-  font-family: 'Comic Neue', cursive;
-  font-size: 1.2rem;
-  padding: 10px;
-  border: 3px solid #000;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 600px;
-  margin: 15px auto;
-  display: block;
-  background: #fffde7;
+  font-family: 'Comic Neue', cursive; font-size: 1.2rem; padding: 10px;
+  border: 3px solid #000; border-radius: 10px; width: 100%; max-width: 600px;
+  margin: 15px auto; display: block; background: #fffde7;
 }
-.footer {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #777;
-}
+.footer { margin-top: 40px; font-size: 0.9rem; color: #777; }
 </style>
 </head>
 <body>
@@ -126,7 +75,7 @@ input[type="file"] { display: none; }
     Punny Boom
   </div>
   <h1>Comic Double Meaning Memes</h1>
-  <p class="subtitle">Auto-generate hilarious double-entendre memes or upload your pic!</p>
+  <p class="subtitle">Auto-generate on viral templates or upload your pic!</p>
 </header>
 
 <div class="container">
@@ -137,13 +86,14 @@ input[type="file"] { display: none; }
 
   <input type="file" id="fileInput" accept="image/*">
 
-  <div id="canvas-container" style="display:none;">
-    <canvas id="memeCanvas" width="800" height="600"></canvas>
+  <div id="preview-container">
+    <img id="memeImg" alt="Generated meme" style="display:none;">
+    <canvas id="memeCanvas" width="800" height="600" style="display:none;"></canvas>
   </div>
 
-  <div class="controls" id="controls" style="display:none;">
-    <input type="text" class="caption-input" id="captionInput" placeholder="Edit caption (or leave for auto)...">
-    <button class="btn" id="regenerateBtn">Regenerate Caption</button>
+  <div class="controls" id="controls">
+    <input type="text" class="caption-input" id="captionInput" placeholder="Edit caption...">
+    <button class="btn" id="regenerateBtn">Regenerate</button>
     <button class="btn primary" id="downloadBtn">Export Meme 📥</button>
   </div>
 </div>
@@ -155,18 +105,19 @@ input[type="file"] { display: none; }
 <script>
 const canvas = document.getElementById('memeCanvas');
 const ctx = canvas.getContext('2d');
+const memeImg = document.getElementById('memeImg');
+const preview = document.getElementById('preview-container');
+const controls = document.getElementById('controls');
 const autoBtn = document.getElementById('autoBtn');
 const uploadBtn = document.getElementById('uploadBtn');
 const fileInput = document.getElementById('fileInput');
 const captionInput = document.getElementById('captionInput');
 const regenerateBtn = document.getElementById('regenerateBtn');
 const downloadBtn = document.getElementById('downloadBtn');
-const canvasContainer = document.getElementById('canvas-container');
-const controls = document.getElementById('controls');
 
-let currentImage = null;
 let currentMode = 'auto';
 let currentCaption = '';
+let currentImage = null;
 
 const captions = [
   "I told my wife she was drawing her eyebrows too high. She looked surprised.",
@@ -183,14 +134,10 @@ const captions = [
   "I used to hate facial hair, but then it grew on me.",
   "What do you call a fake noodle? An impasta!",
   "Why did the bicycle fall over? Because it was two-tired!",
-  "I told my friend she was drawing a blank. She said, 'That's just my artistic style.'",
-  "Why was the math book sad? It had too many problems.",
   "I'm on a seafood diet. I see food and I eat it.",
   "Why don't skeletons fight each other? They don't have the guts!",
   "What did the ocean say to the beach? Nothing, it just waved.",
-  "I used to play piano by ear, but now I use my hands.",
   "Why did the tomato turn red? Because it saw the salad dressing!",
-  "I'm reading a book on the history of glue. I just can't seem to put it down.",
   "What do you call a pile of cats? A meowntain!",
   "Why did the coffee file a police report? It got mugged!",
   "I told my plants a joke. They didn't laugh, but they did grow on me.",
@@ -201,40 +148,84 @@ const captions = [
   "I used to be a banker, but I lost interest.",
   "What do you call cheese that isn't yours? Nacho cheese!",
   "Why was the belt arrested? For holding up a pair of pants!",
-  "I'm reading a book about mazes. I got lost in it.",
   "Why don't scientists trust stairs? Because they're always up to something!",
   "What did one wall say to the other wall? I'll meet you at the corner!",
-  "I told my wife she was overreacting. She said I was underestimating.",
   "Why did the cookie go to the doctor? Because it felt crummy!",
   "I'm on a whiskey diet. I've lost three days already.",
   "What do you call a bear with no teeth? A gummy bear!",
   "Why did the picture go to jail? Because it was framed!",
-  "I asked the gym instructor if he could teach me to do splits. He said how flexible are you? I said I can bend over backwards for you.",
-  "She said she wanted a workout. I offered my personal training services in private.",
+  "I asked the gym instructor if he could teach me to do splits. He said how flexible are you?",
+  "She said she wanted a workout. I offered my personal training services.",
   "He said he needed space. I offered my bed.",
   "I told her I'm a carpenter. She asked if I was good with my wood.",
   "She said she's into tech. I asked if she wanted to try my joystick.",
   "My boss told me to raise the bar. I brought him to the pub.",
   "She said she liked deep conversations. I took her to the ocean.",
-  "He asked if I was into fishing. I said only if we're talking about hooking up.",
-  "I love cooking with wine. Sometimes I even add it to the food.",
-  "She said she wanted a hammer. I didn't know she meant me.",
   "Double standards are the worst. I mean one flag is enough.",
-  "I always thought it was interesting how double jointed kids were always really cool in elementary school. I mean weird flex but ok.",
-  "What do you get when you cross dirty double meanings with WWI? The Triple Entendre.",
-  "A beautiful woman walks into a bar. What'll it be? asks the bartender. I'll have a double entendre she said. So he gave it to her.",
-  "I spent four years at college and didn't learn anything. It's really my own fault. I had a double major in psychology and reverse psychology.",
-  "Why did the double joke cross the bar? To make both of you blush."
+  "A beautiful woman walks into a bar. I'll have a double entendre she said."
+];
+
+const templates = [
+  { id: 'drake', lines: 2 },
+  { id: 'db', lines: 3 },
+  { id: 'fine', lines: 2 },
+  { id: 'success', lines: 2 },
+  { id: 'fry', lines: 2 },
+  { id: 'wonka', lines: 2 },
+  { id: 'yuno', lines: 2 },
+  { id: 'blb', lines: 2 },
+  { id: 'buzz', lines: 2 },
+  { id: 'ds', lines: 3 },
+  { id: 'changemind', lines: 1 },
+  { id: 'rollsafe', lines: 2 },
+  { id: 'pigeon', lines: 2 },
+  { id: 'astronaut', lines: 2 },
+  { id: 'pooh', lines: 2 },
+  { id: 'harold', lines: 2 },
+  { id: 'woman-cat', lines: 2 },
+  { id: 'spiderman', lines: 2 }
 ];
 
 function getRandomCaption() {
   return captions[Math.floor(Math.random() * captions.length)];
 }
 
+function getRandomTemplate() {
+  return templates[Math.floor(Math.random() * templates.length)];
+}
+
+function encodeForMemegen(text) {
+  return text.replace(/ /g, '_').replace(/'/g, "''").replace(/\?/g, '~q').replace(/\//g, '~s');
+}
+
+function generateMemegenUrl(templateId, caption) {
+  const parts = caption.split(/\. |! |\? /).filter(p => p.trim());
+  let top = '', bottom = '';
+  if (parts.length >= 2) {
+    top = parts[0];
+    bottom = parts.slice(1).join('. ');
+  } else {
+    top = caption;
+    bottom = '_';
+  }
+  const topEnc = encodeForMemegen(top);
+  const bottomEnc = encodeForMemegen(bottom);
+  return `https://api.memegen.link/images/${templateId}/${topEnc}/${bottomEnc}.jpg?font=impact`;
+}
+
+function showMemegenMeme(url, caption) {
+  currentCaption = caption;
+  captionInput.value = caption;
+  memeImg.src = url;
+  memeImg.style.display = 'block';
+  canvas.style.display = 'none';
+  preview.style.display = 'inline-block';
+  controls.style.display = 'flex';
+}
+
 function drawComicBackground() {
   ctx.fillStyle = '#fff8dc';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  
   ctx.fillStyle = 'rgba(255, 193, 7, 0.3)';
   for (let x = 0; x < canvas.width; x += 12) {
     for (let y = 0; y < canvas.height; y += 12) {
@@ -245,51 +236,31 @@ function drawComicBackground() {
       }
     }
   }
-  
   ctx.strokeStyle = '#000';
   ctx.lineWidth = 12;
   ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20);
-  
-  ctx.fillStyle = '#ff5722';
-  ctx.beginPath();
-  ctx.moveTo(0, 0);
-  ctx.lineTo(80, 0);
-  ctx.lineTo(0, 80);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.moveTo(canvas.width, 0);
-  ctx.lineTo(canvas.width - 80, 0);
-  ctx.lineTo(canvas.width, 80);
-  ctx.fill();
 }
 
 function drawText(text, isTop = true) {
   const maxWidth = canvas.width - 80;
-  const fontSize = Math.min(58, maxWidth / (text.length * 0.55));
+  const fontSize = Math.min(56, maxWidth / (text.length * 0.55));
   ctx.font = `bold ${fontSize}px 'Bangers', cursive`;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  
   const words = text.split(' ');
   const lines = [];
   let currentLine = words[0] || '';
-  
   for (let i = 1; i < words.length; i++) {
-    const testLine = currentLine + ' ' + words[i];
-    const metrics = ctx.measureText(testLine);
-    if (metrics.width > maxWidth) {
+    const test = currentLine + ' ' + words[i];
+    if (ctx.measureText(test).width > maxWidth) {
       lines.push(currentLine);
       currentLine = words[i];
-    } else {
-      currentLine = testLine;
-    }
+    } else currentLine = test;
   }
   if (currentLine) lines.push(currentLine);
-  
   const lineHeight = fontSize * 1.15;
-  const totalHeight = lines.length * lineHeight;
-  let y = isTop ? 70 + totalHeight / 2 : canvas.height - 70 - totalHeight / 2;
-  
+  const totalH = lines.length * lineHeight;
+  let y = isTop ? 80 + totalH / 2 : canvas.height - 80 - totalH / 2;
   lines.forEach((line, i) => {
     const ly = y + (i - lines.length / 2) * lineHeight;
     ctx.strokeStyle = '#000';
@@ -301,7 +272,6 @@ function drawText(text, isTop = true) {
 }
 
 function drawWatermark() {
-  const wmText = "Generated by Punny Boom";
   ctx.save();
   ctx.globalAlpha = 0.75;
   ctx.fillStyle = '#ff5722';
@@ -312,21 +282,18 @@ function drawWatermark() {
   ctx.font = "bold 11px Bangers";
   ctx.textAlign = 'center';
   ctx.fillText("PB", canvas.width - 165, canvas.height - 25);
-  
   ctx.fillStyle = '#000';
   ctx.font = "bold 13px 'Comic Neue', cursive";
   ctx.textAlign = 'right';
-  ctx.fillText(wmText, canvas.width - 18, canvas.height - 14);
+  ctx.fillText("Generated by Punny Boom", canvas.width - 18, canvas.height - 14);
   ctx.restore();
 }
 
-function renderMeme(image = null, caption = null) {
+function renderUploadMeme(image, caption) {
   if (!caption) caption = getRandomCaption();
   currentCaption = caption;
   captionInput.value = caption;
-  
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
   if (image) {
     const scale = Math.max(canvas.width / image.width, canvas.height / image.height);
     const x = (canvas.width - image.width * scale) / 2;
@@ -337,34 +304,30 @@ function renderMeme(image = null, caption = null) {
   } else {
     drawComicBackground();
   }
-  
-  // Improved split logic for classic top/bottom meme style
   const parts = caption.split(/\. |! |\? /);
-  if (parts.length >= 2 && caption.length > 60) {
-    const mid = Math.ceil(parts.length / 2);
-    const top = parts.slice(0, mid).join('. ').replace(/\.\s*$/, '') + '.';
-    const bottom = parts.slice(mid).join('. ');
-    drawText(top, true);
-    drawText(bottom, false);
+  if (parts.length >= 2 && caption.length > 50) {
+    drawText(parts[0] + '.', true);
+    drawText(parts.slice(1).join('. '), false);
   } else {
     drawText(caption, true);
   }
-  
   drawWatermark();
-  
-  canvasContainer.style.display = 'inline-block';
+  memeImg.style.display = 'none';
+  canvas.style.display = 'block';
+  preview.style.display = 'inline-block';
   controls.style.display = 'flex';
 }
 
 autoBtn.addEventListener('click', () => {
   currentMode = 'auto';
   currentImage = null;
-  renderMeme();
+  const caption = getRandomCaption();
+  const tpl = getRandomTemplate();
+  const url = generateMemegenUrl(tpl.id, caption);
+  showMemegenMeme(url, caption);
 });
 
-uploadBtn.addEventListener('click', () => {
-  fileInput.click();
-});
+uploadBtn.addEventListener('click', () => fileInput.click());
 
 fileInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
@@ -375,7 +338,7 @@ fileInput.addEventListener('change', (e) => {
     img.onload = () => {
       currentImage = img;
       currentMode = 'upload';
-      renderMeme(img);
+      renderUploadMeme(img);
     };
     img.src = ev.target.result;
   };
@@ -383,18 +346,34 @@ fileInput.addEventListener('change', (e) => {
 });
 
 regenerateBtn.addEventListener('click', () => {
-  renderMeme(currentImage, getRandomCaption());
+  if (currentMode === 'auto') {
+    const caption = getRandomCaption();
+    const tpl = getRandomTemplate();
+    const url = generateMemegenUrl(tpl.id, caption);
+    showMemegenMeme(url, caption);
+  } else {
+    renderUploadMeme(currentImage, getRandomCaption());
+  }
 });
 
 captionInput.addEventListener('input', () => {
-  renderMeme(currentImage, captionInput.value);
+  if (currentMode === 'upload') {
+    renderUploadMeme(currentImage, captionInput.value);
+  }
 });
 
 downloadBtn.addEventListener('click', () => {
-  const link = document.createElement('a');
-  link.download = 'punny-boom-meme.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  if (currentMode === 'auto' && memeImg.src) {
+    const a = document.createElement('a');
+    a.href = memeImg.src;
+    a.download = 'punny-boom-meme.jpg';
+    a.click();
+  } else {
+    const a = document.createElement('a');
+    a.download = 'punny-boom-meme.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  }
 });
 </script>
 </body>
